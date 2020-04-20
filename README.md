@@ -1,5 +1,7 @@
 # InventoryItemsAnalyzer
 
-Please remove folder PoEHelper\Plugins\Compiled\InventoryItemsAnalyzer if you use it before
+Please remove folder PoEHelper\Plugins\Compiled\InventoryItemsAnalyzer if you used DLL version before
 
-Copy plugin to PoEHelper\Plugins\Source\InventoryItemsAnalyzer
+Download https://github.com/vadash/InventoryItemsAnalyzer/archive/master.zip
+
+Copy plugin to PoEHelper\Plugins\Source\InventoryItemsAnalyzer (create folder if needed)
