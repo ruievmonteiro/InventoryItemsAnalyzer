@@ -1,16 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ExileCore;
-using ExileCore.PoEMemory;
 using ExileCore.PoEMemory.Components;
 using ExileCore.PoEMemory.MemoryObjects;
-using ExileCore.PoEMemory.Elements;
 using ExileCore.Shared.Enums;
 using ExileCore.PoEMemory.Models;
 using AdvancedTooltip;
 using ExileCore.PoEMemory.Elements.InventoryElements;
 using SharpDX;
-using System.Threading;
 using System.Windows.Forms;
 using System.IO;
 using System;
@@ -314,7 +311,8 @@ namespace InventoryItemsAnalyzer
 
                 #region Filter trash uniques
 
-                if (modsComponent?.ItemRarity == ItemRarity.Unique &&
+                if (!item.HasComponent<ExileCore.PoEMemory.Components.Map>() &&
+                    modsComponent?.ItemRarity == ItemRarity.Unique &&
                     item?.GetComponent<Sockets>()?.LargestLinkSize != 6 &&
                     !GoodUniquesList.Contains(modsComponent.UniqueName))
                 {
