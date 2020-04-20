@@ -1,5 +1,4 @@
-﻿
-namespace InventoryItemsAnalyzer
+﻿namespace InventoryItemsAnalyzer
 {
     public class Constants
     {

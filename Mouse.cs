@@ -6,12 +6,6 @@ namespace InventoryItemsAnalyzer
 {
     internal class Mouse
     {
-        [DllImport("user32.dll")]
-        public static extern bool SetCursorPos(int x, int y);
-
-        [DllImport("user32.dll")]
-        private static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
-
         public const int MOUSEEVENTF_LEFTDOWN = 0x02;
         public const int MOUSEEVENTF_LEFTUP = 0x04;
 
@@ -27,9 +21,15 @@ namespace InventoryItemsAnalyzer
 
         private const int CLICK_DELAY = 1;
 
+        [DllImport("user32.dll")]
+        public static extern bool SetCursorPos(int x, int y);
+
+        [DllImport("user32.dll")]
+        private static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+
 
         /// <summary>
-        /// Sets the cursor position relative to the game window.
+        ///     Sets the cursor position relative to the game window.
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -41,7 +41,7 @@ namespace InventoryItemsAnalyzer
         }
 
         /// <summary>
-        /// Sets the cursor position to the center of a given rectangle relative to the game window
+        ///     Sets the cursor position to the center of a given rectangle relative to the game window
         /// </summary>
         /// <param name="position"></param>
         /// <param name="gameWindow"></param>
@@ -51,23 +51,9 @@ namespace InventoryItemsAnalyzer
             return SetCursorPos((int) (gameWindow.X + position.Center.X),
                 (int) (gameWindow.Y + position.Center.Y));
         }
-        ////////////////////////////////////////////////////////////
-
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct POINT
-        {
-            public int X;
-            public int Y;
-
-            public static implicit operator Point(POINT point)
-            {
-                return new Point(point.X, point.Y);
-            }
-        }
 
         /// <summary>
-        /// Retrieves the cursor's position, in screen coordinates.
+        ///     Retrieves the cursor's position, in screen coordinates.
         /// </summary>
         /// <see>See MSDN documentation for further information.</see>
         [DllImport("user32.dll")]
@@ -121,13 +107,9 @@ namespace InventoryItemsAnalyzer
         public static void VerticalScroll(bool forward, int clicks)
         {
             if (forward)
-            {
                 mouse_event(MOUSE_EVENT_WHEEL, 0, 0, clicks * 120, 0);
-            }
             else
-            {
                 mouse_event(MOUSE_EVENT_WHEEL, 0, 0, -(clicks * 120), 0);
-            }
         }
 
         public static void LeftClick()
@@ -142,6 +124,20 @@ namespace InventoryItemsAnalyzer
             RightMouseDown();
             Thread.Sleep(CLICK_DELAY);
             RightMouseUp();
+        }
+        ////////////////////////////////////////////////////////////
+
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct POINT
+        {
+            public int X;
+            public int Y;
+
+            public static implicit operator Point(POINT point)
+            {
+                return new Point(point.X, point.Y);
+            }
         }
     }
 }
