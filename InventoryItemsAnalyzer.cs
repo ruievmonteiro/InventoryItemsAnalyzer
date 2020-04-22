@@ -847,9 +847,9 @@ namespace InventoryItemsAnalyzer
 
             if (!Settings.HideUnderMouse)
             {
-                DrawSyndicateItems(_VeilItemsPos);
+                //DrawSyndicateItems(_VeilItemsPos);
                 DrawGoodItems(_goodItemsPos);
-                DrawHighItemLevel(_highItemsPos);
+                //DrawHighItemLevel(_highItemsPos);
                 if (Settings.HotKey.PressedOnce())
                 {
                     CoroutineWorker = new Coroutine(ClickShit(), this, coroutineName);
