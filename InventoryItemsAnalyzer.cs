@@ -869,6 +869,8 @@ namespace InventoryItemsAnalyzer
 
             foreach (var normalInventoryItem in normalInventoryItems)
             {
+	            try
+	            {
                 var highItemLevel = false;
                 var item = normalInventoryItem.Item;
                 if (item == null ||
@@ -1432,6 +1434,11 @@ namespace InventoryItemsAnalyzer
 
                         break;
                 }
+	            }
+	            catch (Exception e)
+	            {
+					continue;
+	            }
             }
         }
 
